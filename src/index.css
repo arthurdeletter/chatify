@@ -1,0 +1,29 @@
+:root {
+  --clr-primary: #31157f;
+  --clr-accent: #db43d3;
+  --clr-light: #f7f7f7;
+  --clr-dark: #333333;
+
+  --clr-success: #22c55e;
+  --clr-error: #dc2626;
+  --clr-warning: #facc15;
+  --clr-info: #3b82f6;
+
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
