@@ -15,6 +15,7 @@ type ButtonType = {
   size?: "sm" | "md" | "lg";
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
+  type?: "submit" | "reset" | "button";
 };
 
 const COLORS = {
@@ -74,7 +75,7 @@ export const BaseButton = styled.button<ButtonType>(
   ({ color, disabled, isLoading, size }) => ({
     flexShrink: 0,
     fontWeight: "700",
-    borderRadius: ".5rem",
+    borderRadius: ".25em",
     border: "none",
     display: "flex",
     alignItems: "center",
@@ -98,6 +99,7 @@ export const Button = ({
   isLoading,
   size = "md",
   onClick,
+  type = "button",
   ...props
 }: ButtonType) => {
   return (
@@ -107,6 +109,7 @@ export const Button = ({
       isLoading={isLoading}
       size={size}
       onClick={onClick}
+      type={type}
       {...props}
     >
       {children}

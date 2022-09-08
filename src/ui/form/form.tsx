@@ -1,4 +1,6 @@
+import { FormEvent } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 type RedirectType = {
   description: string;
@@ -11,6 +13,7 @@ type FormProps = {
   description?: string;
   children?: React.ReactNode;
   redirect?: RedirectType;
+  onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
 };
 
 const FormContainer = styled.form({
@@ -46,7 +49,7 @@ const FormBody = styled.div({
 const RedirectLink = styled.p({
   color: "var(--clr-dark)",
   textAlign: "center",
-  span: {
+  a: {
     marginLeft: ".25rem",
     color: "var(--clr-accent)",
     cursor: "pointer",
@@ -56,19 +59,28 @@ const RedirectLink = styled.p({
   },
 });
 
-export const Form = ({ title, description, redirect, children }: FormProps) => {
+export const Form = ({
+  title,
+  description,
+  redirect,
+  children,
+  onSubmit,
+  ...props
+}: FormProps) => {
   return (
-    <FormContainer>
+    <FormContainer onSubmit={onSubmit} {...props}>
       <FormHeader>
         <h2>{title}</h2>
         <p>{description}</p>
       </FormHeader>
       <FormBody>
         {children}
-        <RedirectLink>
-          {redirect?.description}
-          <span>{redirect?.value}</span>
-        </RedirectLink>
+        {redirect && (
+          <RedirectLink>
+            {redirect?.description}
+            <Link to={redirect?.to || ""}>{redirect?.value}</Link>
+          </RedirectLink>
+        )}
       </FormBody>
     </FormContainer>
   );

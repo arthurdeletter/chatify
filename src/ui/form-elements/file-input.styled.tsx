@@ -10,7 +10,7 @@ export const FileInputContainer = styled.div({
     fontWeight: "bold",
     cursor: "pointer",
     "> svg": {
-      width: "1.75rem",
+      width: "1.5rem",
       aspectRatio: "1/1",
     },
     ":hover, :focus": {

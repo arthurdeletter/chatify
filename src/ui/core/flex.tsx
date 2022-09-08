@@ -3,6 +3,7 @@ import styled from "styled-components";
 type FlexProps = {
   gap?: number;
   column?: boolean;
+  reverse?: boolean;
   collide?: boolean;
   justify?: "start" | "end" | "center" | "between" | "evenly" | "around";
   align?: "center" | "start" | "end";
@@ -50,13 +51,14 @@ export const Flex = styled.div<FlexProps>(
   ({
     gap,
     column = false,
+    reverse = false,
     collide = false,
     justify = "start",
     align = "start",
     css,
   }) => ({
     display: "flex",
-    flexDirection: column ? "column" : "row",
+    flexDirection: column && reverse ? "column-reverse" : column ? "column" : reverse ? "row-reverse" : "row",
     gap: gap ? createGap(gap) : "0",
     flexWrap: collide ? "wrap" : "nowrap",
     ...(justify && JUSTIFY_OPTIONS[justify]),

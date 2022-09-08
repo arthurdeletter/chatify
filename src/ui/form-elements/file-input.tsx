@@ -1,10 +1,13 @@
 import { FileInputContainer } from "./file-input.styled";
 import { PhotoIcon, PaperClipIcon } from "@heroicons/react/24/outline";
+import { ChangeEventHandler } from "react";
 
 type FileInputProps = {
   label?: string;
   fileType?: "file" | "image";
   name: string;
+  required?: boolean;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 const ICONS = {
@@ -16,6 +19,8 @@ export const FileInput = ({
   label,
   fileType = "file",
   name,
+  required,
+  onChange,
 }: FileInputProps) => {
   return (
     <FileInputContainer>
@@ -24,7 +29,13 @@ export const FileInput = ({
         <span>{label}</span>
       </label>
 
-      <input type="file" name={name} id={name} />
+      <input
+        type="file"
+        name={name}
+        id={name}
+        onChange={onChange}
+        required={required}
+      />
     </FileInputContainer>
   );
 };

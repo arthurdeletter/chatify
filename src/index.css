@@ -1,7 +1,7 @@
 :root {
   --clr-primary: #31157f;
   --clr-accent: #db43d3;
-  --clr-light: #f7f7f7;
+  --clr-light: #fafafa;
   --clr-dark: #333333;
 
   --clr-success: #22c55e;
@@ -26,4 +26,9 @@ html,
 body {
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
 }
